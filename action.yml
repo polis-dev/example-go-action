@@ -1,0 +1,20 @@
+name: gogha
+description: I dunno what this does yet.
+author: Jake Logemann
+
+branding:
+  icon: 'archive'
+  color: 'gray-dark'
+
+runs:
+  using: docker
+  image: Dockerfile
+
+inputs:
+  val:
+    description: 'A value, for something.'
+    required: false
+
+outputs:
+  cache-hit:
+    description: 'A boolean value to indicate an exact match was found for the primary key'
