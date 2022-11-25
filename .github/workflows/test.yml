@@ -19,9 +19,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Extract metadata (tags, labels) for Docker
-      # https://github.com/docker/metadata-action
-      - uses: ./
+      - name: run the latest build of this action.
+        uses: docker://ghcr.io/${{ github.repository }}:latest
         id: self
         with:
           val: foo
@@ -30,5 +29,6 @@ jobs:
       - {if: always(), run: "#pretty-print inputs.*\njq -SreC '.' <<'__JSON_DATA__'\n${{ toJSON(inputs) }}\n__JSON_DATA__\n", shell: bash}
       - {if: always(), run: "#pretty-print job.*\n   jq -SreC '.' <<'__JSON_DATA__'\n${{ toJSON(job) }}\n__JSON_DATA__\n", shell: bash}
       - {if: always(), run: "#pretty-print env.*\n   jq -SreC '.' <<'__JSON_DATA__'\n${{ toJSON(env) }}\n__JSON_DATA__\n", shell: bash}
+      - {if: always(), run: "#pretty-print outputs.*\n   jq -SreC '.' <<'__JSON_DATA__'\n${{ toJSON(st.self) }}\n__JSON_DATA__\n", shell: bash}
       - {if: always(), run: "#pretty-print steps.*\n jq -SreC '.' <<'__JSON_DATA__'\n${{ toJSON(steps) }}\n__JSON_DATA__\n", shell: bash}
       - {if: always(), run: "#pretty-print runner.*\njq -SreC '.' <<'__JSON_DATA__'\n${{ toJSON(runner) }}\n__JSON_DATA__\n", shell: bash}
