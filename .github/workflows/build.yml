@@ -6,11 +6,12 @@ on:
   schedule: [{ cron: "0 4 * * *" }]
   push:
     branches: [main]
-    paths-ignore:
-      - .github
-      - .gitignore
-      - "*.adoc"
-      - "*.md"
+    paths:
+      - Dockerfile
+      - .dockerignore
+      - "**/go.mod"
+      - "**/go.sum"
+      - "*.go"
 jobs:
   build:
     runs-on: ubuntu-latest
