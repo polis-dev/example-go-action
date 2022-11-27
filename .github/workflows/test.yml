@@ -1,0 +1,25 @@
+name: Test
+on:
+  workflow_dispatch:
+  workflow_call:
+  schedule: [{ cron: "0 4 * * *" }]
+  push:
+    branches: [main]
+    paths: [.github/workflows/test.yml, action.yml]
+
+jobs:
+
+  Default:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: polis-dev/go-action@main
+
+      - if: always()
+        run: "#pretty-print steps.*\n jq -SreC '.' <<'__JSON_DATA__'\n${{ toJSON(steps) }}\n__JSON_DATA__\n"
+        shell: bash
+
+  Direct:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: "docker://ghcr.io/polis-dev/go-action:main"
+      - { run: "jq -SreC '.' <<'_JSON_'\n${{ toJSON(steps) }}\n_JSON_\n", shell: bash }

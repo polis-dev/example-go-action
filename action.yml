@@ -1,0 +1,26 @@
+name: go action
+author: Jake Logemann
+branding:
+  icon: 'archive'
+  color: 'gray-dark'
+
+description: >-
+  Example golang-based GitHub Action.
+
+runs:
+  using: docker
+  image: docker://ghcr.io/polis-dev/go-action:main
+
+inputs:
+  command:
+    description: set the command to run.
+    required: false
+    default: wtf
+  debug:
+    description: is debug enabled? (true/false)
+    required: false
+    default: "false"
+
+outputs:
+  val:
+    description: 'input value as an output.'
