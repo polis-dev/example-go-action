@@ -3,7 +3,7 @@ module action
 go 1.19
 
 require (
-	github.com/samber/lo v1.35.0
+	github.com/samber/lo v1.37.0
 	github.com/sethvargo/go-githubactions v1.1.0
 )
 
