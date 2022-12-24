@@ -12,7 +12,7 @@ jobs:
   Default:
     runs-on: ubuntu-latest
     steps:
-      - uses: polis-dev/go-action@main
+      - uses: polis-dev/example-go-action@main
 
       - if: always()
         run: "#pretty-print steps.*\n jq -SreC '.' <<'__JSON_DATA__'\n${{ toJSON(steps) }}\n__JSON_DATA__\n"
@@ -21,5 +21,5 @@ jobs:
   Direct:
     runs-on: ubuntu-latest
     steps:
-      - uses: "docker://ghcr.io/polis-dev/go-action:main"
+      - uses: "docker://ghcr.io/polis-dev/example-go-action:main"
       - { run: "jq -SreC '.' <<'_JSON_'\n${{ toJSON(steps) }}\n_JSON_\n", shell: bash }
