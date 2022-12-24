@@ -9,7 +9,7 @@ description: >-
 
 runs:
   using: docker
-  image: docker://ghcr.io/polis-dev/go-action:main
+  image: docker://ghcr.io/polis-dev/example-go-action:main
 
 inputs:
   command:
