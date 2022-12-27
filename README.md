@@ -2,6 +2,8 @@
 
 an example/experiment with a GitHub:Action written in [go].
 
+[![Build](https://github.com/polis-dev/example-go-action/actions/workflows/build.yml/badge.svg)](https://github.com/polis-dev/example-go-action/actions/workflows/build.yml)
+
 ## features
 
 - **minimalist**  
